@@ -21,7 +21,7 @@ body {
 }
 
 .landingRevealString::before {
-  /* content: "DFFL"; */
+  content: "DFFL";
   position: absolute;
   color: transparent;
   background-image: repeating-linear-gradient(
@@ -39,7 +39,7 @@ body {
 }
 
 .landingRevealString::after {
-  /* content: "DFFL"; */
+  content: "DFFL";
   position: absolute;
   color: transparent;
   background-image: repeating-linear-gradient(
@@ -77,17 +77,74 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.enterText:hover{
-  color:white;
-  display: inline;
-}
 
 #deltaText{
-  color:#cf1b1b;;
+  color:#cf1b1b;
   position: absolute;
-  left: 50%;
   display:block;
   font-size: 30px;
-  left: 28%;
+  transform: translate(-50%, -50%);
+  left: 50%;
   top: 50%;
 }
+
+.buttonStandard{
+  padding: 20px 40px;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  cursor: pointer;
+  border: 2px solid #cf1b1b;
+  border-radius: 6px;
+  color: #cf1b1b;
+}
+
+.buttonStandard:hover{
+  background-color: white;
+}
+
+#logOrCreateBox, #loginBox, #createAcctBox{
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  color: #cf1b1b;
+  text-align: center;
+}
+
+.loginField, .signupField{
+  /* background-color: lightskyblue; */
+  border-radius: 4px;
+  color: black;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 7px;
+  padding-left: 7px;
+  font-size: 15px;
+  border: 2px solid #cf1b1b;
+}
+
+.loginField:focus, .signupField:focus{
+  outline: none;
+}
+
+.aFormSubmit{
+  padding: 20px 40px;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  cursor: pointer;
+  border: 2px solid #cf1b1b;
+  border-radius: 6px;
+  color: #cf1b1b;
+}
+
+.aFormSubmit:hover{
+  background-color: white;
+}
+
+

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 
-const LandingPage = () => {
+const LandingPage = ({sendToLoginOrCreate}) => {
     const [revealString, setRevealString] = useState("");
     const fullDFFLString = "DFFL", index = useRef(0);
     const [enterString, setEnterString] = useState("");
@@ -13,7 +13,7 @@ const LandingPage = () => {
             index.current++;
         }
         if(index.current < fullDFFLString.length){
-            let addChar = setInterval(tick,1000);
+            let addChar = setInterval(tick,500);
             return () => clearInterval(addChar);
         }
     }, [revealString]);
@@ -33,10 +33,13 @@ const LandingPage = () => {
             for(let i = 0; i < fullDeltaString.length; ++i){
                 setTimeout(function() {
                     setDeltaString(prev => prev + fullDeltaString[i]);
-                }, i * 1000)
+                }, i * 500)
             }
-        }, 1000);
-        setTimeout(function(){ setEnterString("ENTER");}, 5000);
+        }, 500);
+        
+        setTimeout(function(){ 
+            setEnterString(<button className="buttonStandard" onClick={sendToLoginOrCreate}>ENTER</button>);
+        }, 2500);
     }, [])
 
     return(
