@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import StandingsTable from "./homepage_stuff/StandingsTable";
 
 const Home = ({setCurrentUser, user, sendToLanding}) => {
 
@@ -23,6 +24,7 @@ const Home = ({setCurrentUser, user, sendToLanding}) => {
                     <li className="burgeroption">Delete Account</li>
                 </ul>
             </span>
+            <StandingsTable />
         </span>
     )
 }

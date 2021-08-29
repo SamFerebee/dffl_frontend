@@ -255,3 +255,21 @@ body {
 {
   transform: none;
 }
+
+/* HOMEPAGE STANDINGS table */
+#homeStandingsTable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#homeStandingsTable td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color:white;
+}
+
+#homeStandingsTable tr:nth-child(even) {
+  /* background-color: #dddddd; */
+}
