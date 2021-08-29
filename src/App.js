@@ -9,6 +9,7 @@ import Home from "./components/Home";
 function App() {
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState(null);
+  const sendToLanding = () => history.push("/");
   const sendToLoginOrCreate = () => history.push("/log_or_create");
   const sendToLogin = () => history.push("/login");
   const sendToCreateAccount = () => history.push("/create_account");
@@ -29,7 +30,7 @@ function App() {
           <CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>
         </Route>
         <Route exact path = "/home">
-          <Home user={currentUser}/>
+          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding}/>
         </Route>
       </Switch>
     </>

@@ -36,12 +36,13 @@ const CreateAccount = ({setCurrentUser, sendToHome}) => {
           .then(r=>r.json())
           .then(result => {
             if (result.username){
-                setCurrentUser(result);
-                sendToHome();
-                localStorage.setItem("user", result);
+              console.log(result);
+              setCurrentUser(result);
+              sendToHome();
+              localStorage.setItem("user", result);
             }else{
-                console.log(result)
-                alert(result);
+              console.log(result)
+              alert(result);
             }
           })
       }
