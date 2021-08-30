@@ -5,6 +5,7 @@ import LoginOrCreate from "./components/account_stuff/LoginOrCreate";
 import Login from "./components/account_stuff/Login";
 import CreateAccount from "./components/account_stuff/CreateAccount";
 import Home from "./components/Home";
+import AllTimePage from "./components/all_time_stuff/AllTimePage";
 
 function App() {
   const history = useHistory();
@@ -14,6 +15,7 @@ function App() {
   const sendToLogin = () => history.push("/login");
   const sendToCreateAccount = () => history.push("/create_account");
   const sendToHome = () => history.push("/home");
+  const sendToAllTimePage = () => history.push("/all_time_data")
   return (
     <>
       <Switch>
@@ -30,7 +32,10 @@ function App() {
           <CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>
         </Route>
         <Route exact path = "/home">
-          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding}/>
+          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage}/>
+        </Route>
+        <Route exact path = "/all_time_data">
+          <AllTimePage />
         </Route>
       </Switch>
     </>
