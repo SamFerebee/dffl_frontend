@@ -6,6 +6,9 @@ import Login from "./components/account_stuff/Login";
 import CreateAccount from "./components/account_stuff/CreateAccount";
 import Home from "./components/Home";
 import AllTimePage from "./components/all_time_stuff/AllTimePage";
+import Upload_Meme from "./components/meme_stuff/Upload_Meme";
+import Hall_Of_Memes from "./components/meme_stuff/Hall_Of_Memes";
+import View_Meme from "./components/meme_stuff/View_Meme";
 
 function App() {
   const history = useHistory();
@@ -16,6 +19,9 @@ function App() {
   const sendToCreateAccount = () => history.push("/create_account");
   const sendToHome = () => history.push("/home");
   const sendToAllTimePage = () => history.push("/all_time_data")
+  const sendToUploadMeme = () => history.push("/upload_meme");
+  const sendToHallOfMemes = () => history.push("/hall_of_memes");
+
   return (
     <>
       <Switch>
@@ -32,10 +38,19 @@ function App() {
           <CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>
         </Route>
         <Route exact path = "/home">
-          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage}/>
+          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} />
         </Route>
         <Route exact path = "/all_time_data">
           <AllTimePage />
+        </Route>
+        <Route exact path = "/upload_meme">
+          <Upload_Meme user={currentUser} sendToHallOfMemes={sendToHallOfMemes}/>
+        </Route>
+        <Route exact path ="/hall_of_memes">
+          <Hall_Of_Memes />
+        </Route>
+        <Route exact path ="/view_meme/:id">
+          <View_Meme />
         </Route>
       </Switch>
     </>

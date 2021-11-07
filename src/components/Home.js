@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
 import StandingsTable from "./homepage_stuff/StandingsTable";
 
-const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage}) => {
+
+const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage, sendToUploadMeme}) => {
 
     const handleLogout = () => {
         setCurrentUser(null);
@@ -13,7 +14,7 @@ const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage}) => {
         <span>
              <h1 style={{color: "red"}}>{user.username}</h1>
              <img src={user.avatar.url}/>
-             <button onClick={sendToAllTimePage} style={{color: "red"}}>All Time</button>
+             {/* <button onClick={sendToAllTimePage} style={{color: "red"}}>All Time</button> */}
              <span id="burgerMenuToggle">
                 <input type="checkbox" id="revealCheck"/>
                 <span className="burger"></span>
@@ -25,7 +26,8 @@ const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage}) => {
                     <li className="burgeroption">Delete Account</li>
                 </ul>
             </span>
-            <StandingsTable />
+            {/* <StandingsTable /> */}
+            <button onClick={sendToUploadMeme} style={{color: "red"}}>Upload Meme</button>
         </span>
     )
 }
