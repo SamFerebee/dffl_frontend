@@ -22,6 +22,10 @@ function App() {
   const sendToUploadMeme = () => history.push("/upload_meme");
   const sendToHallOfMemes = () => history.push("/hall_of_memes");
 
+  useEffect(()=>{
+    console.log("useEffect in app is running")
+  },[])
+
   return (
     <>
       <Switch>
@@ -47,10 +51,10 @@ function App() {
           <Upload_Meme user={currentUser} sendToHallOfMemes={sendToHallOfMemes}/>
         </Route>
         <Route exact path ="/hall_of_memes">
-          <Hall_Of_Memes />
+          <Hall_Of_Memes user={currentUser}/>
         </Route>
         <Route exact path ="/view_meme/:id">
-          <View_Meme />
+          <View_Meme user={currentUser} setUser={setCurrentUser}/>
         </Route>
       </Switch>
     </>
