@@ -3,10 +3,6 @@ import React, { useState, useEffect } from "react"
 const Upload_Meme = ({sendToHallOfMemes, user}) => {
     const [memeTitle, setMemeTitle] = useState("");
     const [memeFile, setMemeFile] = useState(null);
-   
-    useEffect(()=>{
-        console.log(user)
-    },[])
 
     const handleChange = e => {
         if(e.target.name === "memeTitle"){

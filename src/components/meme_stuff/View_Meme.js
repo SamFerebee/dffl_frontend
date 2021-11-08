@@ -9,6 +9,7 @@ const View_Meme = ({user, setUser}) => {
     const [rating, setRating] = useState(null);
     const [currentComment, setCurrentComment] = useState("");
     const [allComments, setAllComments] = useState([]);
+    let allUsers = {};
 
 
     const submitRating = e =>{
@@ -90,12 +91,11 @@ const View_Meme = ({user, setUser}) => {
 
 
     const populateComments = comments => {
-        console.log(comments[0])
         let temp;
         let t = [];
         comments.forEach((comment)=>{
             temp = <div key={comment.id}>
-                {comment.user.username}<br/>
+                <img src={allUsers[comment.user.username].toString()} />{comment.user.username}<br/>
                 <img src={comment.user.avatar}/>
                 {comment.comment}<br/>
             </div>
@@ -105,6 +105,17 @@ const View_Meme = ({user, setUser}) => {
     }
 
     useEffect(()=>{
+
+        fetch("http://localhost:3000/all_users")
+                .then(r=>r.json())
+                .then(d=>{
+                    d.forEach((d)=>{
+                        allUsers[d.username] = d.avatar.url;
+                    })
+                    console.log(allUsers)
+                    console.log(allUsers["sam"])
+                })
+
         user.memes_rated.includes(id.toString()) ? setCanRate(false) : setCanRate(true);
         fetch(`http://localhost:3000/view_meme/${id}`)
             .then(r=>r.json())
