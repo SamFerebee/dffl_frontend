@@ -281,3 +281,20 @@ body {
 #homeStandingsTable tr:nth-child(even) {
   /* background-color: #dddddd; */
 }
+
+#chatbox {
+  border: 4px solid red;
+  color: blue;
+  width: 350px;
+  height: 400px;
+  overflow:auto;
+  /* overflow: auto;
+  display: flex;
+  flex-direction: column; */
+  
+}
+
+.own-message {
+  right:-300px;
+  position:relative;
+}
