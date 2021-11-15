@@ -261,22 +261,27 @@ body {
 #homeStandingsTable, #allTimeStandingsTable {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 50%;
+  color:white;
 }
 
 #homeStandingsTable td, th {
   border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
   color:white;
 }
 
-#allTimeStandingsTable td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-  color:white;
+#homeStandingsTable td {
+  text-align: center;
+  width: 5px;
+  height: 10px;
 }
+
+
+.standingsAvatar {
+  height: 50px;
+  width: 50px;
+}
+
 
 #homeStandingsTable tr:nth-child(even) {
   /* background-color: #dddddd; */
@@ -291,10 +296,29 @@ body {
   /* overflow: auto;
   display: flex;
   flex-direction: column; */
-  
+  position: absolute;
+  left: 65%;
 }
 
-.own-message {
-  right:-300px;
-  position:relative;
+#chatForm{
+  position:absolute;
+  left: 65%;
+  bottom: -92%;
 }
+
+
+/* .own-message {
+  text-align: right;
+  right: 200px;
+} */
+
+#homeStandingsSpan{
+  display: flex;
+  justify-content: center;
+}
+
+.homeHeaders{
+  display:flex;
+  justify-content: center;
+}
+

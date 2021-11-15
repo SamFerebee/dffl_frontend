@@ -42,7 +42,7 @@ function App() {
           <CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>
         </Route>
         <Route exact path = "/home">
-          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} />
+          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} sendToMemes={sendToHallOfMemes}/>
         </Route>
         <Route exact path = "/all_time_data">
           <AllTimePage />

@@ -95,7 +95,7 @@ const View_Meme = ({user, setUser}) => {
         let t = [];
         comments.forEach((comment)=>{
             temp = <div key={comment.id}>
-                <img src={allUsers[comment.user.username].toString()} />{comment.user.username}<br/>
+                {comment.user.username}:<br/>
                 <img src={comment.user.avatar}/>
                 {comment.comment}<br/>
             </div>
