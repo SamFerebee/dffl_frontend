@@ -322,3 +322,9 @@ body {
   justify-content: center;
 }
 
+.standingsTableHead:hover {
+  cursor: pointer;
+}
+.standingsTableHead {
+  cursor: pointer;
+}

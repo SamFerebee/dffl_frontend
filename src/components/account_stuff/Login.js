@@ -28,7 +28,6 @@ const Login = ({setCurrentUser, sendToHome}) => {
         })
           .then(r=> r.json())
           .then(result => {
-            console.log(result)
             if (result.username){
               setCurrentUser(result);
               localStorage.setItem("user", result);
