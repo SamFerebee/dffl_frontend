@@ -3,6 +3,9 @@ import StandingsTable from "./homepage_stuff/StandingsTable";
 import {ChatEngine} from 'react-chat-engine'
 import {animateScroll} from "react-scroll"
 import Chat from "./chat_stuff/Chat";
+import ReactTooltip from "react-tooltip";
+import Popup from "reactjs-popup";
+
 
 const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage, sendToMemes, sendToUploadMeme}) => {
 
@@ -15,7 +18,7 @@ const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage, sendToMem
     return(
         <span>
              <h1 className="homeHeaders" style={{color: "red"}}>Welcome to the Official DFFL Website</h1>
-             {/* <button onClick={sendToAllTimePage} style={{color: "red"}}>All Time</button> */}
+             <button onClick={sendToAllTimePage} style={{color: "red"}}>All Time</button>
              <span id="burgerMenuToggle">
                 <input type="checkbox" id="revealCheck"/>
                 <span className="burger"></span>
@@ -27,7 +30,7 @@ const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage, sendToMem
                     <li className="burgeroption">Delete Account</li>
                 </ul>
             </span>
-            <h2 className="homeHeaders" style={{color: "blue"}}>Current Standings</h2>
+            <h2 className="homeHeaders" style={{color: "blue"}}>2021 Season Final Standings</h2>
             <span id="homeStandingsSpan">
                 <StandingsTable />
             </span>

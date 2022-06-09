@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
+import ReactTooltip from "react-tooltip";
+import Popup from "reactjs-popup";
 
 const LandingPage = ({sendToLoginOrCreate}) => {
     const [revealString, setRevealString] = useState("");

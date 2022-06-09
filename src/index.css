@@ -263,12 +263,20 @@ body {
   border-collapse: collapse;
   width: 50%;
   color:white;
+  text-align: center;
 }
 
 #homeStandingsTable td, th {
   border: 1px solid #dddddd;
   color:white;
+
 }
+#allTimeStandingsTable td, th {
+  border: 1px solid #dddddd;
+  color:white;
+  text-align: center;
+}
+
 
 #homeStandingsTable td {
   text-align: center;
