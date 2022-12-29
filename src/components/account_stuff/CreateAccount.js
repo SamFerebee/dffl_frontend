@@ -59,6 +59,7 @@ const CreateAccount = ({setCurrentUser, sendToHome}) => {
           </form>
         </span>
     )
+    
 }
 
 export default CreateAccount
