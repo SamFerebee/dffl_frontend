@@ -16,29 +16,14 @@ const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage, sendToMem
     }
 
     return(
-        <span>
-             <h1 className="homeHeaders" style={{color: "red"}}>Welcome to the Official DFFL Website</h1>
-             <button onClick={sendToAllTimePage} style={{color: "red"}}>All Time</button>
-             <span id="burgerMenuToggle">
-                <input type="checkbox" id="revealCheck"/>
-                <span className="burger"></span>
-                <span className="burger"></span>
-                <span className="burger"></span>
-                <ul id="burgerMenu">
-                    <li onClick={handleLogout} className="burgeroption">Logout</li>
-                    <li className="burgeroption">Edit Account</li>
-                    <li className="burgeroption">Delete Account</li>
-                </ul>
-            </span>
-            <h2 className="homeHeaders" style={{color: "blue"}}>2021 Season Final Standings</h2>
-            <span id="homeStandingsSpan">
-                <StandingsTable />
-            </span>
-            <button onClick={sendToUploadMeme} style={{color: "red"}}>Upload Meme</button>
-            <button onClick={sendToMemes}>Memes</button>
-            <br/><br/>
-            <Chat user={user} />
+    <span>
+        <h1 className="homeHeaders" style={{color: "red"}}>Welcome to the Official DFFL Website</h1>
+        <h2 className="homeHeaders" style={{color: "blue"}}>2023 Season Standings</h2>
+        <span id="homeStandingsSpan">
+            <StandingsTable/>
         </span>
+        <Chat user={user}/>
+    </span>
     )
 }
 

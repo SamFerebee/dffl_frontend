@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import ReactTooltip from "react-tooltip";
+import {Tooltip as ReactTooltip} from "react-tooltip";
 
 const AllTimeTable = () => {
     const [allDataArray, setAllDataArray] = useState(null);
@@ -15,7 +15,7 @@ const AllTimeTable = () => {
     const [lastSortStatus, setLastSortStatus ] = useState("none");
 
     let allData = [];
-    const totalSeasons = 8;
+    const totalSeasons = 9;
 
     const getHeaders = () => {
         return(
@@ -49,12 +49,12 @@ const AllTimeTable = () => {
                 <td>{row.points_for.toFixed(2)}</td>
                 <td>{row.points_against.toFixed(2)}</td>
                 {/* <td>{makePointsRatio(row)}</td> */}
-                <td data-tip data-for={row.name}>{row.championships.length}</td>
-                <td data-tip data-for={playoffsID}>{row.playoff_appearances.length}</td>
-                <td>{row.playoff_appearances.length / totalSeasons * 100}%</td>
-                <td data-tip data-for={lossID}>{row.last_place_finishes.length}</td>
+                <td data-tip data-tooltip-id={row.name}>{row.championships.length}</td>
+                <td data-tip data-tooltip-id={playoffsID} >{row.playoff_appearances.length}</td>
+                <td>{(row.playoff_appearances.length / totalSeasons * 100).toFixed(2)}%</td>
+                <td data-tip data-tooltip-id={lossID}>{row.last_place_finishes.length}</td>
                 <ReactTooltip id={row.name} place="right" effect="solid" wrapper="span">
-                    {makeShipsString(row.championships)} 
+                    {makeShipsString(row.championships)}
                 </ReactTooltip>
                 <ReactTooltip id={lossID} place="right" effect="solid" wrapper="span">
                     {makeLastPlacesString(row.last_place_finishes)} 

@@ -17,7 +17,7 @@ const StandingsTable = () => {
         fetch("http://localhost:3000/get_season_data")
             .then(r=>r.json())
             .then(data=>{
-                //console.log(data)
+                console.log(data)
                 data.sort((a,b)=> a.rank - b.rank);
                 setAllData(data);
                 let temp = [];
@@ -255,20 +255,20 @@ const StandingsTable = () => {
     }
 
     return(
-        <table id ="homeStandingsTable">
-            <tbody>
-                <tr>
-                    <th className="standingsTableHead" onClick={sortByRank}>Place</th>
-                    <th></th>
-                    <th>Name</th>
-                    <th className="standingsTableHead" onClick={sortByWins}>Wins</th>
-                    <th className="standingsTableHead" onClick={sortByLosses}>Losses</th>
-                    <th className="standingsTableHead" onClick={sortByPoints}>Points For</th>
-                    <th className="standingsTableHead" onClick={sortByPointsAgainst}>Points Against</th>
-                </tr>
-                    {theTableData}
-            </tbody>
-        </table>
+            <table id ="homeStandingsTable">
+                <tbody>
+                    <tr>
+                        <th className="standingsTableHead" onClick={sortByRank}>Place</th>
+                        <th></th>
+                        <th>Name</th>
+                        <th className="standingsTableHead" onClick={sortByWins}>Wins</th>
+                        <th className="standingsTableHead" onClick={sortByLosses}>Losses</th>
+                        <th className="standingsTableHead" onClick={sortByPoints}>Points For</th>
+                        <th className="standingsTableHead" onClick={sortByPointsAgainst}>Points Against</th>
+                    </tr>
+                        {theTableData}
+                </tbody>
+            </table>
     )
 }
 

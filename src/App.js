@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Switch, Route, useHistory } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import LandingPage from "./components/LandingPage";
 import LoginOrCreate from "./components/account_stuff/LoginOrCreate";
 import Login from "./components/account_stuff/Login";
@@ -11,52 +11,69 @@ import Hall_Of_Memes from "./components/meme_stuff/Hall_Of_Memes";
 import View_Meme from "./components/meme_stuff/View_Meme";
 
 function App() {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
-  const sendToLanding = () => history.push("/");
-  const sendToLoginOrCreate = () => history.push("/log_or_create");
-  const sendToLogin = () => history.push("/login");
-  const sendToCreateAccount = () => history.push("/create_account");
-  const sendToHome = () => history.push("/home");
-  const sendToAllTimePage = () => history.push("/all_time_data")
-  const sendToUploadMeme = () => history.push("/upload_meme");
-  const sendToHallOfMemes = () => history.push("/hall_of_memes");
+  const sendToLanding = () => navigate("/");
+  const sendToLoginOrCreate = () => navigate("/log_or_create");
+  const sendToLogin = () => navigate("/login");
+  const sendToCreateAccount = () => navigate("/create_account");
+  const sendToHome = () => navigate("/home");
+  const sendToAllTimePage = () => navigate("/all_time_data")
+  const sendToUploadMeme = () => navigate("/upload_meme");
+  const sendToHallOfMemes = () => navigate("/hall_of_memes");
 
   useEffect(()=>{
     console.log("useEffect in app is running")
   },[])
 
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("user");
+    sendToLanding();
+  }
+
+  const x =        
+  <span>
+    <span id="burgerMenuToggle">
+      <input type="checkbox" id="revealCheck"/>
+      <span className="burger"></span>
+      <span className="burger"></span>
+      <span className="burger"></span>
+      <ul id="burgerMenu">
+        <li className="burgeroption" onClick={sendToHome}>Home</li>
+          <li className="burgeroption">Matchup Previews</li>
+          <li className="burgeroption" onClick={sendToHallOfMemes}>Hall of Memes</li>
+          <li className="burgeroption" onClick={sendToAllTimePage}>All Time Standings</li>
+          <li className="burgeroption" onClick={handleLogout}>Logout</li>
+          <li className="burgeroption">Edit Account</li>
+          <li className="burgeroption">Delete Account</li>
+      </ul>
+  </span>
+</span>
+
   return (
     <>
-      <Switch>
-        <Route exact path = "/">
-          <LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>
-        </Route>
-        <Route exact path = "/log_or_create">
-          <LoginOrCreate sendToLogin={sendToLogin} sendToCreate={sendToCreateAccount}/>
-        </Route>
-        <Route exact path = "/login">
-          <Login setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>
-        </Route>
-        <Route exact path = "/create_account">
-          <CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>
-        </Route>
-        <Route exact path = "/home">
-          <Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} sendToMemes={sendToHallOfMemes}/>
-        </Route>
-        <Route exact path = "/all_time_data">
-          <AllTimePage />
-        </Route>
-        <Route exact path = "/upload_meme">
-          <Upload_Meme user={currentUser} sendToHallOfMemes={sendToHallOfMemes}/>
-        </Route>
-        <Route exact path ="/hall_of_memes">
-          <Hall_Of_Memes user={currentUser}/>
-        </Route>
-        <Route exact path ="/view_meme/:id">
-          <View_Meme user={currentUser} setUser={setCurrentUser}/>
-        </Route>
-      </Switch>
+    {x}
+    <Routes>
+      <Route exact path = "/" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
+      </Route>
+      <Route exact path = "/log_or_create" element={<LoginOrCreate sendToLogin={sendToLogin} sendToCreate={sendToCreateAccount}/>}>
+      </Route>
+      <Route exact path = "/login" element={<Login setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
+      </Route>
+      <Route exact path = "/create_account" element={<CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
+      </Route>
+      <Route exact path = "/home" element={<Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} sendToMemes={sendToHallOfMemes}/>}>
+      </Route>
+      <Route exact path = "/all_time_data" element={<AllTimePage />}>
+      </Route>
+      <Route exact path = "/upload_meme" element={<Upload_Meme user={currentUser} sendToHallOfMemes={sendToHallOfMemes}/>}>
+      </Route>
+      <Route exact path ="/hall_of_memes" element={<Hall_Of_Memes user={currentUser} sendToUploadMeme={sendToUploadMeme}/>}>
+      </Route>
+      <Route exact path ="/view_meme/:id" element={<View_Meme user={currentUser} setUser={setCurrentUser}/>}>
+      </Route>
+    </Routes>
     </>
   );
 }

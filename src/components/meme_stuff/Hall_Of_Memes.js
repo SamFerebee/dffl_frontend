@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-const Hall_Of_Memes = () => {
+const Hall_Of_Memes = ({sendToUploadMeme}) => {
     const [allMemes, setAllMemes] = useState(null);
 
     useEffect(()=>{
@@ -23,6 +23,7 @@ const Hall_Of_Memes = () => {
     return(
         <span>
             <h1>MEMES</h1>
+            <button onClick={sendToUploadMeme}>Upload Meme</button>
             {allMemes}
         </span>
     )
