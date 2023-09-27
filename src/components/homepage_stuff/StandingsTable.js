@@ -22,6 +22,7 @@ const StandingsTable = () => {
                 setAllData(data);
                 let temp = [];
                 for(let user in data){
+                    console.log(data[user].avatar);
                     let t = <tr key={data[user].name}>
                         <td>{data[user].rank}</td>
                         <td><img src={data[user].avatar} data-tip data-for="tip" className="standingsAvatar"/></td>

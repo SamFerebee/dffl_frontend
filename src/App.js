@@ -22,9 +22,24 @@ function App() {
   const sendToUploadMeme = () => navigate("/upload_meme");
   const sendToHallOfMemes = () => navigate("/hall_of_memes");
 
-  useEffect(()=>{
-    console.log("useEffect in app is running")
-  },[])
+  useEffect(() => {
+    window.addEventListener('error', e => {
+        if (e.message === 'ResizeObserver loop limit exceeded') {
+            const resizeObserverErrDiv = document.getElementById(
+                'webpack-dev-server-client-overlay-div'
+            );
+            const resizeObserverErr = document.getElementById(
+                'webpack-dev-server-client-overlay'
+            );
+            if (resizeObserverErr) {
+                resizeObserverErr.setAttribute('style', 'display: none');
+            }
+            if (resizeObserverErrDiv) {
+                resizeObserverErrDiv.setAttribute('style', 'display: none');
+            }
+        }
+    });
+}, []);
 
   const handleLogout = () => {
     setCurrentUser(null);
