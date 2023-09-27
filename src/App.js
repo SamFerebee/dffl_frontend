@@ -55,23 +55,23 @@ function App() {
     <>
     {x}
     <Routes>
-      <Route exact path = "/" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
+      <Route path = "/" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
       </Route>
-      <Route exact path = "/log_or_create" element={<LoginOrCreate sendToLogin={sendToLogin} sendToCreate={sendToCreateAccount}/>}>
+      <Route path = "/log_or_create" element={<LoginOrCreate sendToLogin={sendToLogin} sendToCreate={sendToCreateAccount}/>}>
       </Route>
-      <Route exact path = "/login" element={<Login setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
+      <Route path = "/login" element={<Login setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
       </Route>
-      <Route exact path = "/create_account" element={<CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
+      <Route path = "/create_account" element={<CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
       </Route>
-      <Route exact path = "/home" element={<Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} sendToMemes={sendToHallOfMemes}/>}>
+      <Route path = "/home" element={<Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} sendToMemes={sendToHallOfMemes}/>}>
       </Route>
-      <Route exact path = "/all_time_data" element={<AllTimePage />}>
+      <Route path = "/all_time_data" element={<AllTimePage />}>
       </Route>
-      <Route exact path = "/upload_meme" element={<Upload_Meme user={currentUser} sendToHallOfMemes={sendToHallOfMemes}/>}>
+      <Route path = "/upload_meme" element={<Upload_Meme user={currentUser} sendToHallOfMemes={sendToHallOfMemes}/>}>
       </Route>
-      <Route exact path ="/hall_of_memes" element={<Hall_Of_Memes user={currentUser} sendToUploadMeme={sendToUploadMeme}/>}>
+      <Route path ="/hall_of_memes" element={<Hall_Of_Memes user={currentUser} sendToUploadMeme={sendToUploadMeme}/>}>
       </Route>
-      <Route exact path ="/view_meme/:id" element={<View_Meme user={currentUser} setUser={setCurrentUser}/>}>
+      <Route path ="/view_meme/:id" element={<View_Meme user={currentUser} setUser={setCurrentUser}/>}>
       </Route>
     </Routes>
     </>
