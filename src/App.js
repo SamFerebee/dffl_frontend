@@ -55,7 +55,7 @@ function App() {
     <>
     {x}
     <Routes>
-      <Route path = "/" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
+      <Route path = "/dffl_frontend" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
       </Route>
       <Route path = "/log_or_create" element={<LoginOrCreate sendToLogin={sendToLogin} sendToCreate={sendToCreateAccount}/>}>
       </Route>
