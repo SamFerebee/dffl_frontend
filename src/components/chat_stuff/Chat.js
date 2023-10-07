@@ -5,12 +5,12 @@ const Chat = ({user}) =>{
     const [currentMessage, setCurrentMessage] = useState("");
 
 
-    /*useEffect(()=>{
+    useEffect(()=>{
         const interval = setInterval(()=>{
             fetchChatData();
         }, 200)
         return () => clearInterval(interval);
-    }, [chatBox])*/
+    }, [chatBox])
 
     const fetchChatData =  async () => {
         try {
