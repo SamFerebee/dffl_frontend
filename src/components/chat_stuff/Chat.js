@@ -10,7 +10,7 @@ const Chat = ({user}) =>{
             fetchChatData();
         }, 200)
         return () => clearInterval(interval);
-    }, [chatBox])
+    }, [])
 
     const fetchChatData =  async () => {
         try {
