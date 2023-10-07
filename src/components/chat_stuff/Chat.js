@@ -6,6 +6,7 @@ const Chat = ({user}) =>{
 
 
     useEffect(()=>{
+        console.log("useeffect from chat")
         const interval = setInterval(()=>{
             fetchChatData();
         }, 500)
