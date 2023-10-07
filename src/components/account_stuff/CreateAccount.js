@@ -29,19 +29,17 @@ const CreateAccount = ({setCurrentUser, sendToHome}) => {
         formData.append("password", createFormInfo.password);
         formData.append("confirmation", createFormInfo.confirmation);
         formData.append("avatar", avatar);
-        fetch("http://localhost:3000/create_account", {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/create_account`, {
           method: "POST",
           body: formData
         })
           .then(r=>r.json())
           .then(result => {
             if (result.username){
-              console.log(result);
               setCurrentUser(result);
               sendToHome();
               localStorage.setItem("user", result);
             }else{
-              console.log(result)
               alert(result);
             }
           })

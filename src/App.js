@@ -9,6 +9,7 @@ import AllTimePage from "./components/all_time_stuff/AllTimePage";
 import Upload_Meme from "./components/meme_stuff/Upload_Meme";
 import Hall_Of_Memes from "./components/meme_stuff/Hall_Of_Memes";
 import View_Meme from "./components/meme_stuff/View_Meme";
+import EditAccount from "./components/account_stuff/EditAccount";
 
 function App() {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function App() {
   const sendToAllTimePage = () => navigate("/all_time_data")
   const sendToUploadMeme = () => navigate("/upload_meme");
   const sendToHallOfMemes = () => navigate("/hall_of_memes");
+  const sendToEditAccount = () => navigate("/edit_account");
 
   useEffect(() => {
     window.addEventListener('error', e => {
@@ -60,7 +62,7 @@ function App() {
           <li className="burgeroption" onClick={sendToHallOfMemes}>Hall of Memes</li>
           <li className="burgeroption" onClick={sendToAllTimePage}>All Time Standings</li>
           <li className="burgeroption" onClick={handleLogout}>Logout</li>
-          <li className="burgeroption">Edit Account</li>
+          <li className="burgeroption" onClick={sendToEditAccount}>Edit Account</li>
           <li className="burgeroption">Delete Account</li>
       </ul>
   </span>
@@ -70,6 +72,8 @@ function App() {
     <>
     {x}
     <Routes>
+      <Route path = "/" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
+      </Route>
       <Route path = "/dffl_frontend" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
       </Route>
       <Route path = "/log_or_create" element={<LoginOrCreate sendToLogin={sendToLogin} sendToCreate={sendToCreateAccount}/>}>
@@ -78,6 +82,7 @@ function App() {
       </Route>
       <Route path = "/create_account" element={<CreateAccount setCurrentUser={setCurrentUser} sendToHome={sendToHome}/>}>
       </Route>
+      <Route path = "/edit_account" element={<EditAccount setUser={setCurrentUser} sendToHome={sendToHome} user={currentUser}/>}/>
       <Route path = "/home" element={<Home setCurrentUser={setCurrentUser} user={currentUser} sendToLanding={sendToLanding} sendToAllTimePage={sendToAllTimePage} sendToUploadMeme={sendToUploadMeme} sendToMemes={sendToHallOfMemes}/>}>
       </Route>
       <Route path = "/all_time_data" element={<AllTimePage />}>

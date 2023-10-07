@@ -9,7 +9,7 @@ const View_Meme = ({user, setUser}) => {
     const [rating, setRating] = useState(null);
     const [currentComment, setCurrentComment] = useState("");
     const [allComments, setAllComments] = useState([]);
-    let allUsers = {};
+    const [allUsers, setAllUsers] = useState();
 
 
     const submitRating = e =>{
@@ -18,7 +18,7 @@ const View_Meme = ({user, setUser}) => {
         formData.append("rating", rating);
         formData.append("user", user.id);
         formData.append("meme", id);
-        fetch("http://localhost:3000/rate_meme",{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/rate_meme`,{
             method: "PATCH",
             body: formData
 
@@ -31,7 +31,7 @@ const View_Meme = ({user, setUser}) => {
                         <h1>{d.title}</h1>
                         Created by: {d.user.username}<br/>
                         rating: {d.average_rating}<br/>
-                        <img src={d.file.url}/>
+                        <img className="memePic" src={d.file.url}/>
                     </span>
                 )
                 populateComments(d.comments);
@@ -43,7 +43,7 @@ const View_Meme = ({user, setUser}) => {
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/get_user/${user.id}`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/get_user/${user.id}`)
             .then(r=>r.json())
             .then(d=>setUser(d))
 
@@ -62,7 +62,7 @@ const View_Meme = ({user, setUser}) => {
         formData.append("user", user.id);
         formData.append("meme", id);
         formData.append("comment", currentComment);
-        fetch("http://localhost:3000/create_comment",{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/create_comment`,{
             method: "POST",
             body: formData
         })
@@ -73,7 +73,7 @@ const View_Meme = ({user, setUser}) => {
                         <h1>{d.title}</h1>
                         Created by: {d.user.username}<br/>
                         rating: {d.average_rating}<br/>
-                        <img src={d.file.url}/>
+                        <img className="memePic" src={d.file.url}/>
                     </span>
                 )
                 populateComments(d.comments);
@@ -96,7 +96,6 @@ const View_Meme = ({user, setUser}) => {
         comments.forEach((comment)=>{
             temp = <div key={comment.id}>
                 {comment.user.username}:<br/>
-                <img src={comment.user.avatar}/>
                 {comment.comment}<br/>
             </div>
             t.push(temp);
@@ -106,30 +105,31 @@ const View_Meme = ({user, setUser}) => {
 
     useEffect(()=>{
 
-        fetch("http://localhost:3000/all_users")
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/all_users`)
                 .then(r=>r.json())
                 .then(d=>{
+                    let t = {};
                     d.forEach((d)=>{
-                        allUsers[d.username] = d.avatar.url;
+                        t[d.username] = d.avatar;
                     })
-                    console.log(allUsers)
-                    console.log(allUsers["sam"])
-                })
+                    //console.log(t)
+                    setAllUsers(t);
 
-        user.memes_rated.includes(id.toString()) ? setCanRate(false) : setCanRate(true);
-        fetch(`http://localhost:3000/view_meme/${id}`)
-            .then(r=>r.json())
-            .then(d=>{
-                setTheDisplay(
-                    <span>
-                        <h1>{d.title}</h1>
-                        Created by: {d.user.username}<br/>
-                        rating: {d.average_rating}<br/>
-                        <img src={d.file.url}/>
-                    </span>
-                )
-                populateComments(d.comments)
-            })
+                    user.memes_rated.includes(id.toString()) ? setCanRate(false) : setCanRate(true);
+                    fetch(`${process.env.REACT_APP_BACKEND_URL}/view_meme/${id}`)
+                        .then(r=>r.json())
+                        .then(d=>{
+                            setTheDisplay(
+                                <span>
+                                    <h1>{d.title}</h1>
+                                    Created by: {d.user.username}<br/>
+                                    rating: {d.average_rating}<br/>
+                                    <img className="memePic" src={d.file.url}/>
+                                </span>
+                            )
+                            populateComments(d.comments)
+                        })
+                })
 
     },[])
     return(

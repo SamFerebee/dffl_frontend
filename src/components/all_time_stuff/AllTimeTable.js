@@ -146,7 +146,6 @@ const AllTimeTable = () => {
     }
 
     const resetSortStatus = sortCriteria =>{
-        console.log("reset all but " + sortCriteria);
         if(sortCriteria != "losses") { setLossesSortStatus("none")};
         if(sortCriteria != "wins") {setWinsSortStatus("none")};
         if(sortCriteria != "pointsAgainst") {setPointsAgainstSortStatus("none")};
@@ -159,7 +158,7 @@ const AllTimeTable = () => {
     }
 
     useEffect(()=>{
-        fetch("http://localhost:3000/get_all_time_data")
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/get_all_time_data`)
             .then(r=>r.json())
             .then(data=>{
                 let tempArray = [];

@@ -5,16 +5,16 @@ const Chat = ({user}) =>{
     const [currentMessage, setCurrentMessage] = useState("");
 
 
-    useEffect(()=>{
+    /*useEffect(()=>{
         const interval = setInterval(()=>{
             fetchChatData();
         }, 200)
         return () => clearInterval(interval);
-    }, [chatBox])
+    }, [chatBox])*/
 
     const fetchChatData =  async () => {
         try {
-            const response = await fetch('http://localhost:3000/get_chat');
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/get_chat`);
             if (!response.ok) {throw Error(response.statusText);}
             const d = await response.json();
             let temp = [];
@@ -51,7 +51,7 @@ const Chat = ({user}) =>{
         const formData = new FormData();
         formData.append('user', user.username);
         formData.append('message', currentMessage);
-        fetch("http://localhost:3000/submit_chat",{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/submit_chat`,{
             method: "POST",
             body: formData
         })

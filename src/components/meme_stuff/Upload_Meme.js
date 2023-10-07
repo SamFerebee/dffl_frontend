@@ -20,7 +20,7 @@ const Upload_Meme = ({sendToHallOfMemes, user}) => {
         formData.append("title", memeTitle);
         formData.append("file", memeFile);
         formData.append("user", user.id);
-        fetch("http://localhost:3000/upload_meme" ,{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/upload_meme` ,{
             method: "POST",
             body: formData
         })

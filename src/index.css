@@ -261,7 +261,7 @@ body {
 #homeStandingsTable, #allTimeStandingsTable {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 50%;
+  width: 75%;
   color:white;
   text-align: center;
 }
@@ -298,20 +298,24 @@ body {
 #chatbox {
   border: 4px solid red;
   color: blue;
-  width: 350px;
-  height: 400px;
+  width: 100%;
+  height: 500px;
   overflow:auto;
   /* overflow: auto;
   display: flex;
   flex-direction: column; */
-  position: absolute;
-  left: 65%;
+
 }
 
 #chatForm{
-  position:absolute;
-  left: 65%;
-  bottom: -92%;
+  
+}
+
+#fullChatDiv{
+  width: 30%;
+  left: 1%;
+  position: sticky;
+  bottom: 0%;
 }
 
 
@@ -335,4 +339,9 @@ body {
 }
 .standingsTableHead {
   cursor: pointer;
+}
+
+.memePic {
+  height: 500px;
+  width: 500px;
 }

@@ -14,18 +14,17 @@ const StandingsTable = () => {
 
 
     useEffect(()=>{
-        fetch("http://localhost:3000/get_season_data")
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/get_season_data`)
             .then(r=>r.json())
             .then(data=>{
-                console.log(data)
                 data.sort((a,b)=> a.rank - b.rank);
+                console.log(data)
                 setAllData(data);
                 let temp = [];
                 for(let user in data){
-                    console.log(data[user].avatar);
                     let t = <tr key={data[user].name}>
                         <td>{data[user].rank}</td>
-                        <td><img src={data[user].avatar} data-tip data-for="tip" className="standingsAvatar"/></td>
+                        <td><img src={data[user].avatar} className="standingsAvatar"/></td>
                         <td>{data[user].name}</td>
                         <td>{data[user].wins}</td>
                         <td>{data[user].losses}</td>

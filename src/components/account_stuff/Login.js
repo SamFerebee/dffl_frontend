@@ -19,7 +19,7 @@ const Login = ({setCurrentUser, sendToHome}) => {
     }
 
     const handleLogin = formInfo => {
-        fetch("http://localhost:3000/login",{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/login`,{
           method: "POST",
           headers:{
             "Content-type": "application/json"
