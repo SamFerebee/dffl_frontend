@@ -8,9 +8,9 @@ const Chat = ({user}) =>{
     useEffect(()=>{
         const interval = setInterval(()=>{
             fetchChatData();
-        }, 200)
+        }, 500)
         return () => clearInterval(interval);
-    }, )
+    }, [])
 
     const fetchChatData =  async () => {
         try {
