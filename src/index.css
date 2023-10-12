@@ -319,10 +319,10 @@ body {
 }
 
 
-/* .own-message {
+.own-message {
   text-align: right;
-  right: 200px;
-} */
+  color: lightblue;
+} 
 
 #homeStandingsSpan{
   display: flex;
@@ -344,4 +344,9 @@ body {
 .memePic {
   height: 500px;
   width: 500px;
+}
+
+.previewsHomePageList{
+  display: flex;
+  justify-content: center;
 }

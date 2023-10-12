@@ -18,7 +18,6 @@ const StandingsTable = () => {
             .then(r=>r.json())
             .then(data=>{
                 data.sort((a,b)=> a.rank - b.rank);
-                console.log(data)
                 setAllData(data);
                 let temp = [];
                 for(let user in data){

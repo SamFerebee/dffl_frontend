@@ -10,6 +10,8 @@ import Upload_Meme from "./components/meme_stuff/Upload_Meme";
 import Hall_Of_Memes from "./components/meme_stuff/Hall_Of_Memes";
 import View_Meme from "./components/meme_stuff/View_Meme";
 import EditAccount from "./components/account_stuff/EditAccount";
+import PreviewHomePage from "./components/previews_stuff/PreviewHomePage"
+import AdminPanel from "./components/admin_stuff/AdminPanel";
 
 function App() {
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ function App() {
   const sendToUploadMeme = () => navigate("/upload_meme");
   const sendToHallOfMemes = () => navigate("/hall_of_memes");
   const sendToEditAccount = () => navigate("/edit_account");
+  const sendToPreviewHome = () => navigate("/previews");
 
   useEffect(() => {
     window.addEventListener('error', e => {
@@ -58,7 +61,7 @@ function App() {
       <span className="burger"></span>
       <ul id="burgerMenu">
         <li className="burgeroption" onClick={sendToHome}>Home</li>
-          <li className="burgeroption">Matchup Previews</li>
+          <li className="burgeroption" onClick={sendToPreviewHome}>Matchup Previews</li>
           <li className="burgeroption" onClick={sendToHallOfMemes}>Hall of Memes</li>
           <li className="burgeroption" onClick={sendToAllTimePage}>All Time Standings</li>
           <li className="burgeroption" onClick={handleLogout}>Logout</li>
@@ -70,7 +73,7 @@ function App() {
 
   return (
     <>
-    {x}
+    {currentUser == null ? null: x}
     <Routes>
       <Route path = "/" element={<LandingPage sendToLoginOrCreate={sendToLoginOrCreate}/>}>
       </Route>
@@ -93,6 +96,7 @@ function App() {
       </Route>
       <Route path ="/view_meme/:id" element={<View_Meme user={currentUser} setUser={setCurrentUser}/>}>
       </Route>
+      <Route path = "/previews" element={<PreviewHomePage user={currentUser}/>}/>
     </Routes>
     </>
   );
