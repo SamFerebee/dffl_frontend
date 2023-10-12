@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react"
 const Chat = ({user}) =>{
     const [chatBox, setChatBox] = useState(<div id="chatbox"></div>)
     const [currentMessage, setCurrentMessage] = useState("");
+    const [chatActive, setChatActive] = useState(true);
 
 
     useEffect(()=>{
-        console.log("useeffect from chat")
         const interval = setInterval(()=>{
             fetchChatData();
         }, 500)
@@ -22,7 +22,7 @@ const Chat = ({user}) =>{
             d.forEach((d)=>{
                 let isSelf;
                 let t;
-                d.author === user.username ? isSelf = true : isSelf = false;
+                d.author.username === user.username ? isSelf = true : isSelf = false;
                 if(isSelf){
                     t = <div style={{wordBreak: "break-all"}} key={d.id} className="own-message">
                         <span style={{fontStyle: "italic"}}>Me</span><br/>
@@ -30,7 +30,7 @@ const Chat = ({user}) =>{
                     </div>
                 }else{
                     t = <div style={{wordBreak: "break-all"}} key={d.id} className="other-message">
-                        {d.author} says: <br/>
+                        {d.author.username} <br/>
                         {d.message}<br/> <br/>
                     </div>
                 }
@@ -57,7 +57,7 @@ const Chat = ({user}) =>{
             body: formData
         })
             .then(r=>r.json())
-            .then(d=>console.log(d))
+            .then()
         setCurrentMessage("");
     }
 
@@ -70,10 +70,19 @@ const Chat = ({user}) =>{
         <input type="submit"/>
     </form>
 
+    const clickedMinButton = () =>{
+        setChatActive(s=>!s);
+    }
+
+
+    const flipButton = <button onClick={clickedMinButton}>Hide Chat</button>;
+    const showButton = <button onClick={clickedMinButton}>Show Chat</button>;
+
     return(
-        <div id="fullChatDiv">
-            {chatBox}
-            {chatForm}
+        <div className="fullChatDiv">
+            {chatActive ? flipButton : showButton}
+            {chatActive ? chatBox : null}
+            {chatActive ? chatForm : null}
         </div>
     )
 }

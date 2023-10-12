@@ -7,7 +7,7 @@ const PreviewHomePage = () =>{
     <div className="previewsHomePageList">
         <div>
         <iframe width="750" height="500" 
-        src="https://www.youtube.com/embed/bwKKAQY_2YY?si=K9HKs10HS0zFjH9-" 
+        src="https://www.youtube.com/embed/bF48Us34L-o?si=idbh_tx-CLiMa6Wz" 
         title="YouTube video player" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

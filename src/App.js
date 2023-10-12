@@ -12,6 +12,7 @@ import View_Meme from "./components/meme_stuff/View_Meme";
 import EditAccount from "./components/account_stuff/EditAccount";
 import PreviewHomePage from "./components/previews_stuff/PreviewHomePage"
 import AdminPanel from "./components/admin_stuff/AdminPanel";
+import Chat from "./components/chat_stuff/Chat";
 
 function App() {
   const navigate = useNavigate();
@@ -98,6 +99,7 @@ function App() {
       </Route>
       <Route path = "/previews" element={<PreviewHomePage user={currentUser}/>}/>
     </Routes>
+    {currentUser == null ? null : <Chat user={currentUser}/>}
     </>
   );
 }

@@ -22,7 +22,6 @@ const Home = ({setCurrentUser, user, sendToLanding, sendToAllTimePage, sendToMem
         <span id="homeStandingsSpan">
             <StandingsTable/>
         </span>
-        <Chat user={user}/>
     </span>
     )
 }
