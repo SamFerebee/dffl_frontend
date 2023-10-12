@@ -50,7 +50,7 @@ const CreateAccount = ({setCurrentUser, sendToHome}) => {
           <form onSubmit={handleSubmit}>
             <input className="signupField" type="text" name="username" placeholder="Username" onChange={handleCreateChange} value={createFormInfo.name}/>
             <p></p><input className="signupField" type="email" name="email" placeholder="Email" onChange={handleCreateChange} value={createFormInfo.email}/>
-            <p></p><input type="file" name="avatar" placeholder="Avatar" onChange={(e) => setAvatar(e.target.files[0])}/>
+            <p></p>Picture <input type="file" name="avatar" placeholder="Avatar" onChange={(e) => setAvatar(e.target.files[0])}/>
             <p></p><input className="signupField" type="password" name="password" placeholder="Password" onChange={handleCreateChange} value={createFormInfo.password}/>
             <p></p><input className="signupField" type="password" name="confirmation" placeholder="Confirm Password" onChange={handleCreateChange} value={createFormInfo.confirmation}/><br></br><br></br>
             <input className="aFormSubmit" type="submit" id="createAcctSubmit" value="Create Account"/>
